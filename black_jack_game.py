@@ -1,3 +1,5 @@
+
+#Work in progress please wait till i fix code and sort out all issues and bugs :)
 import random
 from black_jack_logos import logo
 
@@ -69,3 +71,4 @@ def black_jack():
 
 print(logo)
 black_jack()
+
