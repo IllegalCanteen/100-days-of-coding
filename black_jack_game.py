@@ -2,6 +2,11 @@
 #Work in progress please wait till i fix code and sort out all issues and bugs :)
 import random
 from black_jack_logos import logo
+from black_jack_logos import win
+from black_jack_logos import lose
+from black_jack_logos import draw
+
+
 
 def black_jack():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -11,64 +16,109 @@ def black_jack():
     print(f"PLAYERS CARDS : {player_cards}")
 
     computer_cards = random.sample(cards, 1)
-    print(f"COMPUTER'S CARDS {computer_cards}: ")
+    print(f"COMPUTER'S FIRST CARD- {computer_cards}: ")
+
+    print("\n"*5)
 
     computer_cards += random.sample(cards, 1)
 
     pick_again = input("Do you want to pick another card: ").lower()
     while play_again:
+        player_score=0
         if pick_again == "y":
             player_cards += random.sample(cards, 1)
-            print(player_cards)
+
             for card in player_cards:
                 player_score += card
-            print(f"Your score: {player_score}")
+
+
+
             if player_score > 21:
-                print(f"You lose you have {player_score} which is above 21 ")
-                print("Dealer wins")
-                return()
+                if 11 in player_cards:
+                    player_score=0
+                    position_of_11=player_cards.index(11)
+                    player_cards[position_of_11]= 1
+                    for card in player_cards:
+                        player_score += card
+                    print(f"Your cards: {player_cards}")
+                    print(f"Your score: {player_score}")
+                    pick_again=input("\nDo you want to pick another card: ").lower()
+                else:
+                    print(f"Your cards: {player_cards}")
+                    print(f"You lose you have {player_score} which is above 21 ")
+                    print("\n"*3)
+                    print("Dealer wins")
+                    print(lose)
+                    return()
             elif player_score == 21:
+                print(f"Your cards: {player_cards}")
                 break
             else:
-                pick_again = input("Do you want to pick another card: ").lower()
+                print(f"Your cards: {player_cards}")
+                print(f"Your score: {player_score}")
+                pick_again = input("\nDo you want to pick another card: ").lower()
                 player_score=0
         elif pick_again == "n":
             for card in player_cards:
                 player_score += card
-            print(player_score)
+            print(f"Your score: {player_score}")
             break
 
-
-
+    print("\n" * 10)
     computer_score = 0
     for card in computer_cards:
         computer_score += card
-    print(computer_cards)
+    print(f"computers cards: {computer_cards}")
     print(f"computers score: {computer_score}")
     if computer_score< 17:
-        print("Dealer cards too low picking another card ")
-        computer_cards+=random.sample(cards,1)
-        computer_score=0
-        for card in computer_cards:
-            computer_score += card
-        if computer_score > 21:
-            print(f"Computers new cards:{computer_cards} ")
-            print("Computer has exceeded 21 you win! ")
-            return
-        else:
-            print(f"Computers new cards:{computer_cards} ")
-            print(f"computers new score: {computer_score}")
+        cpick_again=True
+        while cpick_again:
+            print("\nDealer cards too low picking another card ")
+            computer_cards += random.sample(cards, 1)
+            computer_score = 0
+            for card in computer_cards:
+                computer_score += card
 
+            if computer_score > 21:
+                if 11 in computer_cards:
+                    computer_score = 0
+                    position_of_11_dot_2 = computer_cards.index(11)
+                    computer_cards[position_of_11_dot_2] = 1
+                    for card in computer_cards:
+                        computer_score += card
+                    print(computer_cards)
+                    if computer_score >21:
+                        print(f"Computers new cards:{computer_cards} ")
+                        print("Computer has exceeded 21 you win! ")
+                        print(win)
+                        return
+                else:
+                    print(f"\nComputers new cards:{computer_cards} ")
+                    print("\nComputer has exceeded 21 you win! ")
+                    print(win)
+                    return
+
+            elif computer_score >= 17:
+                print(f"Dealer's cards: {computer_cards}")
+                print(computer_score)
+                break
+            else:
+                print(f"Computers new cards:{computer_cards} ")
+                print(f"computers new score: {computer_score}")
+
+
+    print(f'''Your cards: {player_cards} vs Dealers cards: {computer_cards} ''')
     if computer_score > player_score:
         print("Dealer Wins")
-
+        print(lose)
     elif computer_score == player_score:
         print("Its a draw no one wins")
+        print(draw)
 
     elif computer_score < player_score:
         print("Player wins")
+        print(win)
     return None
 
 print(logo)
 black_jack()
-
