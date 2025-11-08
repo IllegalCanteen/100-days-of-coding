@@ -8,24 +8,27 @@ from black_jack_logos import draw
 
 
 def black_jack():
+    print(logo)
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     player_score = 0
     play_again=True
-    player_cards = random.sample(cards, 2)
+    player_cards = [random.choice(cards), random.choice(cards)]
+    if player_cards[0] == 11 and player_cards[1] == 11:
+        player_cards[0]=1
     print(f"PLAYERS CARDS : {player_cards}")
 
-    computer_cards = random.sample(cards, 1)
+    computer_cards = [random.choice(cards)]
     print(f"COMPUTER'S FIRST CARD- {computer_cards}: ")
 
-    print("\n"*5)
+    print("\n")
 
-    computer_cards += random.sample(cards, 1)
+    computer_cards += [random.choice(cards)]
 
     pick_again = input("Do you want to pick another card: ").lower()
     while play_again:
         player_score=0
         if pick_again == "y":
-            player_cards += random.sample(cards, 1)
+            player_cards.append(random.choice(cards))
 
             for card in player_cards:
                 player_score += card
@@ -45,7 +48,7 @@ def black_jack():
                 else:
                     print(f"Your cards: {player_cards}")
                     print(f"You lose you have {player_score} which is above 21 ")
-                    print("\n"*3)
+                    print("\n")
                     print("Dealer wins")
                     print(lose)
                     return()
@@ -56,16 +59,18 @@ def black_jack():
                 print(f"Your cards: {player_cards}")
                 print(f"Your score: {player_score}")
                 pick_again = input("\nDo you want to pick another card: ").lower()
-                player_score=0
+
         elif pick_again == "n":
             for card in player_cards:
                 player_score += card
             print(f"Your score: {player_score}")
             break
 
-    print("\n" * 10)
+    print("\n" )
     computer_score = 0
     for card in computer_cards:
+        if computer_cards[0] == 11 and computer_cards[1] == 11:
+            computer_cards[0]=1
         computer_score += card
     print(f"computers cards: {computer_cards}")
     print(f"computers score: {computer_score}")
@@ -73,7 +78,7 @@ def black_jack():
         cpick_again=True
         while cpick_again:
             print("\nDealer cards too low picking another card ")
-            computer_cards += random.sample(cards, 1)
+            computer_cards.append(random.choice(cards))
             computer_score = 0
             for card in computer_cards:
                 computer_score += card
@@ -119,6 +124,5 @@ def black_jack():
         print(win)
     return None
 
-print(logo)
-black_jack()
 
+black_jack()
