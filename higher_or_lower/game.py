@@ -68,7 +68,7 @@ def higher_or_lower():
 
 playing=True
 while playing:
-    play = input("Do you want to begin yes(y) or no(n)? ")
+    play = input("Do you want to begin yes(y) or no(n)? ").lower()
     if play == "y":
         higher_or_lower()
         playing = False
@@ -77,6 +77,7 @@ while playing:
         break
     else:
         print("Enter valid input y or n")
+
 
 
 
