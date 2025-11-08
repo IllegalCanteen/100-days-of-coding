@@ -41,7 +41,7 @@ def higher_or_lower():
                 if a > b:
                     print(f"You guessed correctly {person_1} has {a} million followers while  {person_2} has only {b} million followers!")
                     score += 1
-                    time.sleep(5)
+                    time.sleep(3)
                 else:
                     print(f"You guessed wrong {person_1} has only {a} million followers while  {person_2} has  {b} million followers!")
                     print(f"Your score is {score}")
@@ -53,7 +53,7 @@ def higher_or_lower():
                 if b > a:
                     print(f"You guessed correctly {person_1} has only {a} million followers while  {person_2} has  {b} million followers!")
                     score += 1
-                    time.sleep(5)
+                    time.sleep(3)
                 else:
                     print(f"You guessed wrong {person_1} has {a} million followers while  {person_2} has only {b} million followers!")
                     print(f"Your score is {score}")
@@ -77,6 +77,7 @@ while playing:
         break
     else:
         print("Enter valid input y or n")
+
 
 
 
