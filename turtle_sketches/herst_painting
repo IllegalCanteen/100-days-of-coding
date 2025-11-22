@@ -1,0 +1,57 @@
+#import colorgram as cg
+#color_list = cg.extract("image.jpg", 30)
+#color_palette = []
+import turtle
+from string import whitespace
+#for count in range(len(color_list)):
+    #color= color_list[count]
+    #r=color.rgb.r
+    #g= color.rgb.g
+    #b=color.rgb.b
+    #rgb=(r,g,b)
+    #color_palette.append(rgb)
+#print(color_palette)
+from turtle import Turtle,Screen
+import random
+rgb_colors=[ (189, 167, 121), (57, 90, 111), (113, 43, 35), (163, 89, 64), (64, 43, 43), (171, 183, 170), (136, 149, 69), (127, 160, 172), (101, 79, 89), (83, 133, 108), (108, 39, 44), (39, 61, 47), (45, 40, 41), (211, 196, 124), (174, 150, 152), (36, 71, 88), (179, 106, 80), (36, 67, 84), (207, 185, 181), (99, 140, 119), (184, 198, 181), (148, 116, 120), (204, 183, 186), (180, 195, 200), (53, 69, 59), (122, 129, 135)]
+
+pen=Turtle()
+turtle.colormode(255)
+canvas=Screen()
+canvas.window_height()
+canvas.window_width()
+pen.setheading(225)
+pen.up()
+pen.forward(300)
+pen.down()
+pen.setheading(0)
+lines=0
+for i in range(10):
+    random_colour=random.choice(rgb_colors)
+    for r in range(10):
+        random_color=random.choice(rgb_colors)
+        pen.color()
+        pen.dot(20,random_color)
+        pen.up()
+        pen.forward(50)
+        pen.down()
+    lines += 1
+    if lines % 2 != 0:
+        pen.left(90)
+        pen.up()
+        pen.forward(50)
+        pen.left(90)
+        pen.forward(50)
+    else:
+        pen.right(90)
+        pen.up()
+        pen.forward(50)
+        pen.up()
+        pen.right(90)
+        pen.forward(50)
+
+
+
+
+
+canvas.exitonclick()
