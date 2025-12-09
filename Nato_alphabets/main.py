@@ -1,6 +1,3 @@
-
-
-
 import pandas
 
 nato_file=pandas.read_csv("nato_phonetic_alphabet.csv")
