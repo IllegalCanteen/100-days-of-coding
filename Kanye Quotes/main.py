@@ -7,7 +7,7 @@ def get_quote():
     quote_link.raise_for_status()
     quote=quote_link.json()["quote"]
     canvas.itemconfig(quote_text,text=quote)
-    #Write your code here.
+
 
 
 
