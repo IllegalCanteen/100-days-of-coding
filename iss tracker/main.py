@@ -4,10 +4,10 @@ import smtplib
 import time
 
 
-MY_LAT=12.866300582885742
-MY_LONG=77.52478790283203
-my_email="kaustubh.sunderraman@gmail.com"
-my_password="elsa gdbb zkgz cocm"
+MY_LAT=112.866300582885742
+MY_LONG=717.52478790283203
+my_email="pleaseenteryourownemailandpassword@gmail.com"
+my_password="fkfdee  fek,dof frvmogtmf"
 location_link=requests.get(url="http://api.open-notify.org/iss-now.json#")
 location_link.raise_for_status()
 data=location_link.json()
@@ -38,4 +38,5 @@ while True:
                 to_addrs=my_email,
                 msg="Subject:Look up!\n\n\nWoah look up at the sky theres an iss station above!"
         )
+
 
